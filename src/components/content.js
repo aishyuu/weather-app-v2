@@ -2,7 +2,7 @@ import loading from "../images/loading.gif";
 
 function getInitialData(contentDiv) {
   fetch(
-    "https://api.weatherapi.com/v1/forecast.json?key=2b7803e6e34f4d32b87101848240902&q=New York&days=1&aqi=no&alerts=no",
+    "https://api.weatherapi.com/v1/forecast.json?key=2b7803e6e34f4d32b87101848240902&q=London&days=1&aqi=no&alerts=no",
   )
     .then((data) => {
       return data.json();
@@ -38,6 +38,11 @@ function displayInformation(data) {
 function displayCurrentWeather(data) {
   const contentDiv = document.querySelector(".content");
   const currentData = data.current;
+
+  const weatherImage = document.createElement("img");
+  weatherImage.src = `https:${currentData.condition.icon}`;
+
+  contentDiv.appendChild(weatherImage)
 }
 
 export default function content() {
