@@ -1,5 +1,5 @@
 body {
-    height: 100vh;
+  height: 100vh;
 }
 
 .header {
@@ -35,29 +35,44 @@ body {
 }
 
 .content {
-    height: 92%;
-    background-color: #172A3A;
+  height: 92%;
+  background-color: #172a3a;
 }
 
 .location-input {
-    width: 60vw;
-    padding: 0.4rem;
-    border: 1px solid transparent;
+  width: 60vw;
+  padding: 0.4rem;
+  border: 1px solid transparent;
 }
 
 .location-input:focus {
-    outline: 1px;
+  outline: 1px;
 }
 
 .location-submit-btn {
-    background-color: #FCF7F8;
-    padding: 0.4rem;
-    border: 1px solid #FCF7F8;
-    border-radius: 0 10% 10% 0;
+  background-color: #fcf7f8;
+  padding: 0.4rem;
+  border: 1px solid #fcf7f8;
+  border-radius: 0 10% 10% 0;
 }
 
 .location-submit-btn:hover {
-    cursor: pointer;
-    background-color: #cfcccc;
-    border-color: #cfcccc
+  cursor: pointer;
+  background-color: #cfcccc;
+  border-color: #cfcccc;
 }
+
+.loading-div {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-img {
+    width: 20%;
+}
+
+
+

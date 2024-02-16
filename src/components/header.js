@@ -38,6 +38,6 @@ export default function header() {
 
   locationForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("Hello!")
+    console.log(e.target[0].value)
   })
 }
