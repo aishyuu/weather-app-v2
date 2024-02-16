@@ -1,6 +1,7 @@
 .header {
   background-color: #5b616a;
   padding: 1rem 2rem;
+  color: white;
 
   display: flex;
   justify-content: space-between;
@@ -13,6 +14,17 @@
 }
 
 .header-temp-button {
-    font-size: 1.25rem;
-    padding: 0.25rem 1.25rem;
+  font-size: 1.25rem;
+  padding: 0.25rem 1.25rem;
+}
+
+.header-github-div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-source-image {
+  height: 4rem;
+  width: 4rem;
 }
