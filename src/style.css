@@ -1,7 +1,12 @@
+body {
+    height: 100vh;
+}
+
 .header {
   background-color: #5b616a;
   padding: 1rem 2rem;
   color: white;
+  height: 8%;
 
   display: flex;
   justify-content: space-between;
@@ -27,4 +32,9 @@
 .header-source-image {
   height: 4rem;
   width: 4rem;
+}
+
+.content {
+    height: 92%;
+    background-color: #172A3A;
 }
