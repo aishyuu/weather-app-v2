@@ -38,3 +38,26 @@ body {
     height: 92%;
     background-color: #172A3A;
 }
+
+.location-input {
+    width: 60vw;
+    padding: 0.4rem;
+    border: 1px solid transparent;
+}
+
+.location-input:focus {
+    outline: 1px;
+}
+
+.location-submit-btn {
+    background-color: #FCF7F8;
+    padding: 0.4rem;
+    border: 1px solid #FCF7F8;
+    border-radius: 0 10% 10% 0;
+}
+
+.location-submit-btn:hover {
+    cursor: pointer;
+    background-color: #cfcccc;
+    border-color: #cfcccc
+}
