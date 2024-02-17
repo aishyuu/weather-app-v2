@@ -1,14 +1,14 @@
 import loading from "../images/loading.gif";
+import moment from "moment";
 
 function getInitialData(contentDiv) {
   fetch(
-    "https://api.weatherapi.com/v1/forecast.json?key=2b7803e6e34f4d32b87101848240902&q=London&days=1&aqi=no&alerts=no",
+    "https://api.weatherapi.com/v1/forecast.json?key=2b7803e6e34f4d32b87101848240902&q=Los Angeles&days=3&aqi=no&alerts=no",
   )
     .then((data) => {
       return data.json();
     })
     .then((response) => {
-      console.log(response);
       loadingDiv.remove();
       displayInformation(response);
     });
@@ -33,6 +33,7 @@ function displayLoadingImage() {
 
 function displayInformation(data) {
   displayCurrentWeather(data);
+  displayHourlyForcast(data);
 }
 
 function displayCurrentWeather(data) {
@@ -66,6 +67,41 @@ function displayCurrentWeather(data) {
 
   currentWeatherAllDiv.appendChild(currentWeatherBigInfo);
   contentDiv.appendChild(currentWeatherAllDiv);
+}
+
+function displayHourlyForcast(data) {
+  const hourlyForecast = data.forecast.forecastday[0].hour;
+  const currentWeatherAllDiv = document.querySelector(".weather-current");
+
+  const hourForecastDiv = document.createElement("div");
+  hourForecastDiv.classList.add("hourly-forecast");
+  console.log(hourlyForecast);
+
+  for (let index = 0; index < hourlyForecast.length; index++) {
+    const element = hourlyForecast[index];
+    const hourDiv = document.createElement("div");
+    hourDiv.classList.add("hour-forecast");
+    console.log(element);
+
+    const hourTime = document.createElement("p");
+    hourTime.classList.add("hour-time");
+    hourTime.textContent = moment.unix(element.time_epoch).format("hh:mm A");
+    hourDiv.appendChild(hourTime);
+
+    const hourImg = document.createElement("img");
+    hourImg.classList.add("hour-icon");
+    hourImg.src = `https:${element.condition.icon}`;
+    hourDiv.appendChild(hourImg);
+
+    const hourTemp = document.createElement("p");
+    hourTemp.classList.add("hour-temp");
+    hourTemp.textContent = `${element.temp_f}°`;
+    hourDiv.appendChild(hourTemp);
+
+    hourForecastDiv.appendChild(hourDiv);
+  }
+
+  currentWeatherAllDiv.appendChild(hourForecastDiv);
 }
 
 export default function content() {

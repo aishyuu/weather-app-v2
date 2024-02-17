@@ -82,12 +82,14 @@ body {
     margin: 0 auto;
     padding: 2rem;
     display: flex;
+    gap: 1.5rem;
     color: white;
 }
 
 .weather-current-big {
     width: 30%;
     border-right: 1px solid white;
+    padding-right: 1rem;
 }
 
 .weather-current-city {
@@ -108,4 +110,23 @@ body {
 
 .weather-current-temp {
     font-size: 3rem;
+}
+
+.hourly-forecast {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+}
+
+.hour-forecast {
+    max-width: 75px;
+    text-align: center;
+}
+
+.hour-time {
+    font-size: 1.5rem;
+}
+
+.hour-temp {
+    font-size: 1.25rem;
 }
