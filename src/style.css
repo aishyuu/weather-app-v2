@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 body {
   height: 100vh;
 }
@@ -37,6 +39,7 @@ body {
 .content {
   height: 92%;
   background-color: #172a3a;
+  font-family: "Roboto", sans-serif;
 }
 
 .location-input {
@@ -74,5 +77,35 @@ body {
     width: 20%;
 }
 
+.weather-current {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    color: white;
+}
 
+.weather-current-big {
+    width: 30%;
+    border-right: 1px solid white;
+}
 
+.weather-current-city {
+    font-size: 1.25rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.weather-current-imgtemp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-current-img {
+    width: 6rem;
+}
+
+.weather-current-temp {
+    font-size: 3rem;
+}
