@@ -10,7 +10,9 @@ function getInitialData(contentDiv) {
     })
     .then((response) => {
       loadingDiv.remove();
-      displayInformation(response);
+      const isCel = false;
+      displayTempButton(response, isCel);
+      displayInformation(response, isCel);
     });
 
   const loadingDiv = displayLoadingImage();
@@ -31,12 +33,35 @@ function displayLoadingImage() {
   return loadingDiv;
 }
 
-function displayInformation(data) {
-  displayCurrentWeather(data);
-  displayHourlyForcast(data);
+function displayTempButton(data, isCel) {
+  const contentDiv = document.querySelector(".content");
+  const changeTempButton = document.createElement("button");
+  changeTempButton.classList.add("temp-change-btn");
+  changeTempButton.textContent = "Change to C°";
+
+  changeTempButton.addEventListener("click", () => {
+    document.querySelector(".weather-current").remove();
+    document.querySelector(".additional-info").remove();
+
+    if (isCel) {
+      changeTempButton.textContent = "Change to C°";
+    } else {
+      changeTempButton.textContent = "Change to F°";
+    }
+    isCel = !isCel;
+    displayInformation(data, isCel);
+  });
+
+  contentDiv.appendChild(changeTempButton);
 }
 
-function displayCurrentWeather(data) {
+function displayInformation(data, isCel) {
+  displayCurrentWeather(data, isCel);
+  displayHourlyForcast(data, isCel);
+  displayAdditionalInfo(data, isCel);
+}
+
+function displayCurrentWeather(data, isCel) {
   const contentDiv = document.querySelector(".content");
   const currentData = data.current;
   const currentWeatherAllDiv = document.createElement("div");
@@ -60,7 +85,11 @@ function displayCurrentWeather(data) {
 
   const weatherTemp = document.createElement("h1");
   weatherTemp.classList.add("weather-current-temp");
-  weatherTemp.textContent = `°${currentData.temp_f}`;
+  if (isCel) {
+    weatherTemp.textContent = `${currentData.temp_c}°`;
+  } else {
+    weatherTemp.textContent = `${currentData.temp_f}°`;
+  }
   currentWeatherImgTempDiv.appendChild(weatherTemp);
 
   currentWeatherBigInfo.appendChild(currentWeatherImgTempDiv);
@@ -69,19 +98,17 @@ function displayCurrentWeather(data) {
   contentDiv.appendChild(currentWeatherAllDiv);
 }
 
-function displayHourlyForcast(data) {
+function displayHourlyForcast(data, isCel) {
   const hourlyForecast = data.forecast.forecastday[0].hour;
   const currentWeatherAllDiv = document.querySelector(".weather-current");
 
   const hourForecastDiv = document.createElement("div");
   hourForecastDiv.classList.add("hourly-forecast");
-  console.log(hourlyForecast);
 
   for (let index = 0; index < hourlyForecast.length; index++) {
     const element = hourlyForecast[index];
     const hourDiv = document.createElement("div");
     hourDiv.classList.add("hour-forecast");
-    console.log(element);
 
     const hourTime = document.createElement("p");
     hourTime.classList.add("hour-time");
@@ -95,13 +122,38 @@ function displayHourlyForcast(data) {
 
     const hourTemp = document.createElement("p");
     hourTemp.classList.add("hour-temp");
-    hourTemp.textContent = `${element.temp_f}°`;
+    if (isCel) {
+      hourTemp.textContent = `${element.temp_c}°`;
+    } else {
+      hourTemp.textContent = `${element.temp_f}°`;
+    }
+
     hourDiv.appendChild(hourTemp);
 
     hourForecastDiv.appendChild(hourDiv);
   }
 
   currentWeatherAllDiv.appendChild(hourForecastDiv);
+}
+
+function displayAdditionalInfo(data, isCel) {
+  const content = document.querySelector(".content");
+  const additionalInfo = document.createElement("div");
+  additionalInfo.classList.add("additional-info");
+
+  console.log(data);
+
+  const feelsLike = document.createElement("p");
+  feelsLike.classList.add("feels-like-text");
+  if (isCel) {
+    feelsLike.textContent = `Feels Like: ${data.current.feelslike_c}°`;
+  } else {
+    feelsLike.textContent = `Feels Like: ${data.current.feelslike_f}°`;
+  }
+
+  additionalInfo.appendChild(feelsLike);
+
+  content.appendChild(additionalInfo);
 }
 
 export default function content() {

@@ -42,6 +42,11 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.temp-change-btn {
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
 .location-input {
   width: 60vw;
   padding: 0.4rem;
@@ -129,4 +134,13 @@ body {
 
 .hour-temp {
     font-size: 1.25rem;
+}
+
+.additional-info {
+    padding: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: #CED3DC;
 }
