@@ -150,8 +150,19 @@ function displayAdditionalInfo(data, isCel) {
   } else {
     feelsLike.textContent = `Feels Like: ${data.current.feelslike_f}°`;
   }
-
   additionalInfo.appendChild(feelsLike);
+
+  const humidity = document.createElement("p");
+  humidity.textContent = `Humidity: ${data.current.humidity}`;
+  additionalInfo.appendChild(humidity);
+
+  const wind = document.createElement("p");
+  wind.textContent = `Wind: ${data.current.wind_dir} ${data.current.wind_degree}°`;
+  additionalInfo.appendChild(wind);
+
+  const windSpeed = document.createElement("p");
+  windSpeed.textContent = `Wind Speed: ${data.current.wind_mph}mph`;
+  additionalInfo.appendChild(windSpeed);
 
   content.appendChild(additionalInfo);
 }
