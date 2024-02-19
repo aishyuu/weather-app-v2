@@ -145,3 +145,7 @@ body {
     gap: 2rem;
     background-color: #CED3DC;
 }
+
+.daily-forecast {
+    color: white;
+}

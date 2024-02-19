@@ -3,8 +3,6 @@ export default function displayAdditionalInfo(data, isCel) {
   const additionalInfo = document.createElement("div");
   additionalInfo.classList.add("additional-info");
 
-  console.log(data);
-
   const feelsLike = document.createElement("p");
   feelsLike.classList.add("feels-like-text");
   if (isCel) {

@@ -3,6 +3,7 @@ import loading from "../images/loading.gif";
 import displayCurrentWeather from "./displayCurrentWeather";
 import displayHourlyForcast from "./displayHourlyForecast";
 import displayAdditionalInfo from "./displayAdditionalInfo";
+import displayThreeDayForecast from "./displayThreeDayForecast";
 
 function getInitialData(contentDiv) {
   fetch(
@@ -62,6 +63,7 @@ function displayInformation(data, isCel) {
   displayCurrentWeather(data, isCel);
   displayHourlyForcast(data, isCel);
   displayAdditionalInfo(data, isCel);
+  displayThreeDayForecast(data, isCel);
 }
 
 export default function content() {
