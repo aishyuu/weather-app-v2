@@ -1,66 +1,36 @@
-# marrow
-A rich, barebones start to a JavaScript web project
+# Weather App
 
-## Motivation
-There are a lot of web templates that include these fancy shmancy libraries and frameworks, but what about those who want to hone their fundamentals with some good ol javascript, while having industry standard tools? That's where the idea of marrow came.
+### Requirements for project
+User Story: As a User, I want to get weather information on load
+1. Get data from a weather API
+    
+    a. On website load, call data
+    b. Use weatherapi because of their generous free tier
+    
+    
+User Story: As a user, I want to see the current weather
+2. Display weather API data
 
-## Goal
-The goal with marrow is to provide the most barebones and lightweight way to get started with a javascript front-end web development project. In particular I want to include.
+    a. Render the results through Divs and display on the web page
+    
+User Story: As a user, I want to change between Celsius and Fahrenheint temperatures
+3. Change between Celsius and Fahrenheit through a button
+    
+    a. On button click, re-render page information from celsius to fahrenheit, and vice versa
+    b. Should not have to recall the API to be able to change information
 
-- Webpack with basic configuration for the most common files (css, fonts, images, and csv/json)
-- ESLint and Prettier configuration with the Airbnb style guide
-- A basic file structure to get going as quick as possible
+User Story: As a user, I want to search for weather information for any allowed location.
+4. Implement a search bar that calls the API with inputted data
+    
+    a. Create a search bar that, when on submitting, calls the API using a specific query
+    b. The page should not go into a loading state when the call is submitted.
+    c. If the call returns in an error, display on screen (without reloading page)
+    d. If the call returns in data, re-render the page with new data.
+    
 
-## Installation
-1. On the top right, you will see a "use this template" button. Click on it and click "Create a new repository" and you can now make a repository of your own using the marrow template!
+User Story: As a user, I want to have my temperature preferences saved.
+5. Implement local storage
 
-![Create new repository on template button](https://docs.github.com/assets/cb-77734/mw-1440/images/help/repository/use-this-template-button.webp)
-
-2. Copy the repository to your IDE using your preferred method.
-
-3. In your terminal, write the following command to install the node modules needed for the project.
-
-```bash
-npm i
-```
-
-4. Open the index.html file in the dist folder
-
-```bash
-open ./dist/index.html
-```
-
-5. Run the following command to auto build the website whenever a change is made
-
-```bash
-npm run start
-```
-
-6. Make changes to the files in the src folder and have fun programming!
-
-*If you want to go all the way and do a complete reset of this project, remove everything in the style.css file and clear the index.js besides the css imports.*
-
-```javascript
-import "./style.css";
-import "./reset.css";
-```
-
-## Custom npm commands made for this template
-
-1. Build the project once
-
-```bash
-npm run build
-```
-
-2. Build the project whenever a change is detected
-
-```bash
-npm run start
-```
-
-## Contact
-
-If you want to contact me over anything, whether it be about the template or to just talk about programming in general, feel free to connect through my Twitter. Would love to talk about tech with other people who are in the dev world!
-
-[Twitter @BonnyBonBon_](https://twitter.com/BonnyBonBon_)
+    a. On first ever load, create a local storage instance that saves the temperature preference to fahrenheit
+    b. If the temperature button is clicked, the preference in local storage is changed
+    c. On each subsequent load (including new calls for weather information), the preference should always be rendered
