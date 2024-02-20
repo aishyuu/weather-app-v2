@@ -46,6 +46,7 @@ function displayTempButton(data, isCel) {
   changeTempButton.addEventListener("click", () => {
     document.querySelector(".weather-current").remove();
     document.querySelector(".additional-info").remove();
+    document.querySelector(".daily-forecast").remove();
 
     if (isCel) {
       changeTempButton.textContent = "Change to C°";
