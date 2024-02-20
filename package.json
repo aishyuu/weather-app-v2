@@ -1,6 +1,7 @@
 {
   "name": "marrow",
   "version": "1.0.0",
+  "homepage": "https://aishyuu.github.io/weather-app-v2",
   "description": "",
   "private": true,
   "scripts": {
@@ -28,6 +29,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "gh-pages": "^6.1.1",
     "moment": "^2.30.1"
   }
 }
