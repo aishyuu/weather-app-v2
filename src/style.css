@@ -148,4 +148,22 @@ body {
 
 .daily-forecast {
     color: white;
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.day-forecast {
+    text-align: center;
+    line-height: 1.5rem;
+    border: 1px solid white;
+    border-radius: 10%;
+    padding: 1rem;
+}
+
+.day-rain {
+    color: gray;
 }
