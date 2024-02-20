@@ -4,6 +4,7 @@ import displayCurrentWeather from "./displayCurrentWeather";
 import displayHourlyForcast from "./displayHourlyForecast";
 import displayAdditionalInfo from "./displayAdditionalInfo";
 import displayThreeDayForecast from "./displayThreeDayForecast";
+import displayTempButton from "./displayTempButton";
 
 function getInitialData(contentDiv) {
   fetch(
@@ -37,29 +38,6 @@ function displayLoadingImage() {
   return loadingDiv;
 }
 
-function displayTempButton(data, isCel) {
-  const contentDiv = document.querySelector(".content");
-  const changeTempButton = document.createElement("button");
-  changeTempButton.classList.add("temp-change-btn");
-  changeTempButton.textContent = "Change to C°";
-
-  changeTempButton.addEventListener("click", () => {
-    document.querySelector(".weather-current").remove();
-    document.querySelector(".additional-info").remove();
-    document.querySelector(".daily-forecast").remove();
-
-    if (isCel) {
-      changeTempButton.textContent = "Change to C°";
-    } else {
-      changeTempButton.textContent = "Change to F°";
-    }
-    isCel = !isCel;
-    displayInformation(data, isCel);
-  });
-
-  contentDiv.appendChild(changeTempButton);
-}
-
 function displayInformation(data, isCel) {
   displayCurrentWeather(data, isCel);
   displayHourlyForcast(data, isCel);
@@ -71,3 +49,4 @@ export default function content() {
   const contentDiv = document.querySelector(".content");
   getInitialData(contentDiv);
 }
+

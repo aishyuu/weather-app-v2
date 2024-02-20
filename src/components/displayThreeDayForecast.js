@@ -10,7 +10,6 @@ export default function displayThreeDayForecast(data, isCel) {
     const element = forecastData[index];
     const dailyDiv = document.createElement("div");
     dailyDiv.classList.add("day-forecast");
-    console.log(element);
 
     const dailyDate = document.createElement("p");
     dailyDate.classList.add("day-date");

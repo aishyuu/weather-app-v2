@@ -1,5 +1,11 @@
 import logo from "../images/weather_icon.png";
 import github from "../images/github.png";
+import displayCurrentWeather from "./displayCurrentWeather";
+import displayHourlyForcast from "./displayHourlyForecast";
+import displayAdditionalInfo from "./displayAdditionalInfo";
+import displayThreeDayForecast from "./displayThreeDayForecast";
+import displayTempButton from "./displayTempButton";
+import displayInformation from "./displayInformation";
 
 export default function header() {
   const headerDiv = document.querySelector(".header");
@@ -38,20 +44,37 @@ export default function header() {
 
   locationForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    const errorText = document.querySelector(".err-text");
+    if (errorText) {
+      errorText.remove();
+    }
     fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=2b7803e6e34f4d32b87101848240902&q=${e.target[0].value}&days=3&aqi=no&alerts=no`
-    ).then((data) => {
+      `https://api.weatherapi.com/v1/forecast.json?key=2b7803e6e34f4d32b87101848240902&q=${e.target[0].value}&days=3&aqi=no&alerts=no`,
+    )
+      .then((data) => {
         if (data.ok) {
-            return data.json();
+          return data.json();
+        } else {
+          throw new Error("City not found!");
         }
-        else {
-            throw new Error("City not found!")
-        }
-    }).then((data) => {
-        console.log(data)
-    }).catch((err) => {
-        console.log(err)
-    })
+      })
+      .then((data) => {
+        const isCel = false;
+        document.querySelector(".temp-change-btn").remove();
+        document.querySelector(".weather-current").remove();
+        document.querySelector(".additional-info").remove();
+        document.querySelector(".daily-forecast").remove();
+
+        displayTempButton(data, isCel);
+        displayInformation(data, isCel);
+      })
+      .catch((err) => {
+        console.log(err);
+        const formContent = document.querySelector(".location-form");
+        const errText = document.createElement("p");
+        errText.classList.add("err-text");
+        errText.textContent = "Can't find city. Make sure it's a city";
+        formContent.prepend(errText);
+      });
   });
 }

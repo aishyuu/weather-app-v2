@@ -167,3 +167,7 @@ body {
 .day-rain {
     color: gray;
 }
+
+.err-text {
+    color: rgb(255, 123, 123);
+}
